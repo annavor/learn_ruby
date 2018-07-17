@@ -7,24 +7,24 @@ class Dictionary
 
   def add(options)
     options = { options => nil } if options.class == String
-    self.entries = self.entries.merge(options)
+    self.entries = entries.merge(options)
   end
 
   def keywords
-    self.entries.keys.sort
+    entries.keys.sort
   end
 
   def include?(string)
-    self.entries.has_key?(string)
+    entries.has_key?(string)
   end
 
   def find(word)
-    self.entries.select { |k,v| k.match(/#{word}/) } || {}
+    entries.select { |k,v| k.match(/#{word}/) } || {}
   end
 
   def printable
     strings = []
-    self.entries.sort.each do |k,v|
+    entries.sort.each do |k,v|
       strings << "[#{k}] \"#{v}\""
     end
     strings.join("\n")
